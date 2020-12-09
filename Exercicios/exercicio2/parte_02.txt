@@ -1,3 +1,6 @@
+# Não era o comando grep, mas sim a expressão regular apenas.
+
+# Mesmo assim, aqui você captura 'revist' e 'revista'.
 grep -E 'revista?'
 
 grep -E 'letras' -i
