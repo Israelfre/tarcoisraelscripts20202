@@ -1,15 +1,16 @@
 #!/bin/bash
 
-adc=${0}
-nome=${1}
-email=${2}
+adc=$1
+nome=$2
+email=$3
 
-if [ ${adc} = 'adicionar' ]
+if test ${adc} = 'adicionar' 
 then
 	echo "${nome}:${email}" >> usuarios.db
 	echo "Contato ${nome} adicionado com sucesso"
 fi
-if [ ${adc} = 'listar' ]
+
+if test ${adc} = 'listar' 
 then
 	cat usuarios.db
 fi
