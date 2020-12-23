@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Correção: 1,0
 adc=$1
 nome=$2
 email=$3
