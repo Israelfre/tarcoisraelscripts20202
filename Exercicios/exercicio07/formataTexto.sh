@@ -1,4 +1,5 @@
 #!/bin/bash
+# Correção: 0,5
 FORMATO=$1
 COR=$2
 SEP=$3
