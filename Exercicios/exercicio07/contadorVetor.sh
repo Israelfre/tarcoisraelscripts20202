@@ -1,4 +1,5 @@
 #!/bin/bash
+# Correção: 0,5
 
 Num=()
 ind=0
