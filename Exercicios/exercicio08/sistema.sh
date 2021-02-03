@@ -1,55 +1,86 @@
 #!/bin/bash
 
-menu() {
-   
-   echo "1 - Tempo Ligado"
-   echo "2 - Kernel"
-   echo "3 - Memória Virtual"
-   echo "4 - CPU por núcleos"
-   echo "5 - CPU por processos"
-   echo "6 - Memória Física"
-   echo "7 - Sair"
-   read -p "Informe a opção: " OPCAO
-   case $OPCAO in
+trap "echo 'Script  Encerrado';exit" 2
 
-      1) clear
-	 uptime
-	 read -p "Digite [enter] para retornar ao menu."     
-         ;;
-      2) clear
-	 dmesg | tail -n 10
-	 read -p "Digite [enter] para retornar ao menu."     
-         ;;
-      3) clear
-	 vmstat 1 10
-	 read -p "Digite [enter] para retornar ao menu."  
-         ;;
-      4) clear
-	 mpstat -P ALL 1 5
-	 read -p "Digite [enter] para retornar ao menu."
-         ;;
-      5) clear
-	 pidstat 1 5
-	 read -p "Digite [enter] para retornar ao menu."
-         ;;
-      6) clear
-	 free -m
-	 read -p "Digite [enter] para retornar ao menu."
-         ;;
-      7) exit 0
-         ;;
-      *)
-	 echo "Digite [enter] e tente novamente."
-	 read 
-	 ;;
-   esac
-   
-   clear
+menu() {
+	echo "1 - Tempo ligado"
+	echo "2 - Últimas Mensagens do Kernel  "
+	echo "3 - Memória Virtual" 
+	echo "4 - Uso da CPU por núcleo"
+	echo "5 - Uso da CPU por processos"	
+	echo "6 - Uso da Memória Física"
+   	echo " "
+	read -p "Informe a opção: " OPCAO
 }
 
+tempo(){
+        
+	clear
+	echo "Resultado do tempo"	
+	uptime
+	echo " " 
+
+}    
+kernel(){
+         clear
+	 echo "Kernel"
+	 dmesg | tail -n 10
+	 echo " "     
+}
+memoria(){
+ 	 clear
+	 echo "Memoria"
+	 vmstat 1 10
+	 echo " "
+}
+CPUnucleo(){
+	 clear
+	 echo "CPU Nucleo" 
+	 mpstat -P ALL 1 5
+	 echo " "
+}
+CPUprocesso(){
+	 clear
+	 echo "CPU Processo"
+	 pidstat 1 5
+	 echo " "
+}
+MemoriaF(){
+         clear
+	 echo "Memoria Fisica"
+	 free -m
+	 echo " "
+}
+   
 while true
 do
    menu
+	
+	if [ $OPCAO -eq 1 ]
+	then
+		tempo
+	
+	elif [ $OPCAO -eq 2 ]
+	then	
+		kernel
+
+	elif [ $OPCAO -eq 3 ]
+	then
+		memoria
+	elif [ $OPCAO -eq 4 ]
+        then
+		CPUnucleo	
+	
+	elif [ $OPCAO -eq 5 ]
+        then
+		CPUprocesso
+
+	elif [ $OPCAO -eq 6 ]
+        then
+		MemoriaF
+	else
+		echo "Opção Invalida"
+	fi
 done
 
 
