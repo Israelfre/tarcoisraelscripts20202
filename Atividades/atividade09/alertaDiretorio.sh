@@ -1,4 +1,5 @@
 #!/bin/bash
+# Correção: 3,0
 
 tempo=$1
 diret=$2
