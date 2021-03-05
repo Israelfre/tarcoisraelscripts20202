@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Não faz o mais importante.
 SUBNET=$(aws ec2 describe-subnets --query "Subnets[0].SubnetId" --output text)
 IMAGE=ami-042e8287309f5df03
 SGID=$(aws ec2 describe-security-groups --query "SecurityGroups[0].GroupId" --output text)
