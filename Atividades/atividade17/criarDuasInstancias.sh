@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Correção: 0,0. Idêntico ao do Rodrigo Lima. Também não valerá presença.
 SUBNET=$(aws ec2 describe-subnets --query "Subnets[0].SubnetId" --output text)
 IMAGE=ami-042e8287309f5df03
 SGID=$(aws ec2 create-security-group --description "Aplicacao Web" --group-name "aplicacaoweb" --output text)
@@ -35,6 +35,7 @@ EOF
 chmod +x mysqlserver.sh
 chmod +x mysqlclient.sh
 
+# Está idêntico ao do Rodrigo, até o IP 138.99.95.10/32 que ele usou.
 aws ec2 authorize-security-group-ingress --group-name "aplicacaoweb" --port 22 --protocol tcp --cidr 138.99.95.10/32
 aws ec2 authorize-security-group-ingress --group-name "aplicacaoweb" --port 80 --protocol tcp --cidr 0.0.0.0/0
 aws ec2 authorize-security-group-ingress --group-name "aplicacaoweb" --port 3306 --protocol tcp --source-group $SGID
