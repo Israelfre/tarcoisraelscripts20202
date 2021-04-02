@@ -1,4 +1,10 @@
 #!/bin/bash
+# Correção: 1,0
+# A saída está como:
+# Acesse http:///wordpress para finalizar a configuração.
+# Então tive que tentar os dois IP para descobrir qual era o servidor Web.
+# Entretanto, apesar de surgir a tela do Wordpress, ele pode as informações do banco de dados.
+# Isso demonstra que o wp-config.php não foi configurado corretamente. Entre na instância que você verá o oerro.
 
 SUBNET=$(aws ec2 describe-subnets --query "Subnets[0].SubnetId" --output text)
 IMAGE=ami-042e8287309f5df03
