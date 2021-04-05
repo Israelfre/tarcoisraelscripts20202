@@ -51,9 +51,9 @@ systemctl restart apache2
 BD=wordpress
 USER=wordpress
 PASSWORD=123blog456
-HOST=$IdMSQL
+HOST=$EndPoint
 
-cat<< wp-config.php
+cat<<FIM > wp-config.php
 
 <?php 
 define( 'DB_NAME', '$BD' );
