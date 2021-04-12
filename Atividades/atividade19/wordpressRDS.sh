@@ -1,4 +1,5 @@
 #!/bin/bash
+# Correção: 0,5. 
 
 SUBNET=$(aws ec2 describe-subnets --query "Subnets[0].SubnetId" --output text)
 SUBNET1=$(aws ec2 describe-subnets --query "Subnets[1].SubnetId" --output text)
@@ -21,6 +22,9 @@ echo "Criando  instância de Banco de Dados no RDS..."
 
 BDMSQL=$(aws rds create-db-instance --db-instance-identifier scripts --engine mysql --master-username $USUARIO --master-user-password $SENHA --allocated-storage 20 --no-publicly-accessible --db-subnet-group-name $RDSID --vpc-security-group-ids $SGID --db-instance-class db.t2.micro)
 EndPoint=$(aws rds describe-db-instances --query "DBInstances[].Endpoint.Address" --output text)
+
+# Correção: Você não espera nada ficar pronto? Não vai funcionar, pois a instância web irá tentar criar o banco, mas o RDS
+# não estará pronto.
 
 echo "Endpoint do RDS: $EndPoint"
 
